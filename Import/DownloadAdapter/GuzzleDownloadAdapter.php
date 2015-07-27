@@ -1,13 +1,12 @@
 <?php
+
 namespace Giosh94mhz\GeonamesBundle\Import\DownloadAdapter;
 
-use Doctrine\Common\Cache\FilesystemCache;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\Event\CompleteEvent;
 use GuzzleHttp\Pool;
 use GuzzleHttp\Event\ProgressEvent;
-use GuzzleHttp\Event\ErrorEvent;
 
 class GuzzleDownloadAdapter extends AbstractDownloadAdapter
 {
@@ -61,7 +60,7 @@ class GuzzleDownloadAdapter extends AbstractDownloadAdapter
             $contentLength = 0;
             $pool = new Pool($this->client, $requests, [
                 'complete' => function (CompleteEvent $event) use (&$contentLength) {
-                    $contentLength += $event->getRequest()->getHeader('Content-Length');
+                    $contentLength += $event->getResponse()->getHeader('Content-Length');
                 }
             ]);
             $pool->wait();
@@ -92,7 +91,7 @@ class GuzzleDownloadAdapter extends AbstractDownloadAdapter
             if ($progressFunctions !== null) {
                 $f = $progressFunctions[$i];
                 $request->getEmitter()->on('progress', function(ProgressEvent $event) use ($f) {
-                    call_user_func($f, $event->downloaded, $event->downloadSize);
+                    call_user_func($f, $event->downloadSize, $event->downloaded);
                 });
             }
         }
