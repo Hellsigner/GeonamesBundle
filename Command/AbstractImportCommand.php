@@ -23,10 +23,16 @@ abstract class AbstractImportCommand extends ContainerAwareCommand
     {
         $this
             ->addOption(
-                'fetch-only',
+                'no-import',
                 null,
                 InputOption::VALUE_NONE,
                 'Download required files without importing'
+            )
+            ->addOption(
+                'no-fetch',
+                null,
+                InputOption::VALUE_NONE,
+                'Import files without download'
             )
         ;
 
@@ -51,9 +57,11 @@ abstract class AbstractImportCommand extends ContainerAwareCommand
             $dispatcher->addSubscriber($outputSubscriber);
         }
 
-        if ($input->getOption('fetch-only')) {
+        if (!$input->getOption('no-fetch')) {
             $director->download();
-        } else {
+        }
+
+        if (!$input->getOption('no-import')) {
             $director->import();
         }
     }
