@@ -41,8 +41,8 @@ class Admin1ImportStepBuilder extends AbstractAdminImportStepBuilder
         $admin
             ->setCode($value[5])
             ->setCountryCode($value[4])
-            ->setName($value[1])
-            ->setAsciiName($value[2])
+            ->setName($toponym->getName())
+            ->setAsciiName($toponym->getAsciiName())
         ;
 
         return $admin;
