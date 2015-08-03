@@ -125,10 +125,9 @@ class ImportOutputSubscriber implements EventSubscriberInterface
     public function onError(ImportErrorEvent $event)
     {
         if ($this->logger) {
-            $this->logger->error($event->getException()->getMessage(),array(
+            $this->logger->info($event->getException()->getMessage(),array(
                 'class' => $event->getClass(),
-                'value' => $event->getValue(),
-                'exception' => $event->getException()->getTrace()
+                'value' => $event->getValue()
             ));
         }
     }
@@ -136,10 +135,9 @@ class ImportOutputSubscriber implements EventSubscriberInterface
     public function onSkip(ImportErrorEvent $event)
     {
         if ($this->logger) {
-            $this->logger->debug($event->getException()->getMessage(),array(
+            $this->logger->info($event->getException()->getMessage(), array(
                 'class' => $event->getClass(),
-                'value' => $event->getValue(),
-                'exception' => $event->getException()->getTrace()
+                'value' => $event->getValue()
             ));
         }
     }
