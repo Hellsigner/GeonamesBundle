@@ -10,7 +10,7 @@
         <join-column name="geoname_id" referenced-column-name="geoname_id" nullable="false"/>
       </join-columns>
     </one-to-one>
-    <field name="code" type="string" column="admin1" length="2" nullable="false">
+    <field name="code" type="string" column="admin1" length="4" nullable="false">
       <options><option name="fixed">true</option></options>
     </field>
     <field name="countryCode" type="string" column="country" length="2" nullable="false">
