@@ -2,12 +2,12 @@
 namespace Giosh94mhz\GeonamesBundle\Tests\Import\DownloadAdapter;
 
 use Giosh94mhz\GeonamesBundle\Import\DownloadAdapter\GuzzleDownloadAdapter;
-use GuzzleHttp\Client;
-use GuzzleHttp\Subscriber\Mock as BaseMock;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Event\BeforeEvent;
-use GuzzleHttp\Message\ResponseInterface;
-use GuzzleHttp\Stream\Stream;
+use GuzzleHttp5Legacy\Client;
+use GuzzleHttp5Legacy\Subscriber\Mock as BaseMock;
+use GuzzleHttp5Legacy\Message\Response;
+use GuzzleHttp5Legacy\Event\BeforeEvent;
+use GuzzleHttp5Legacy\Message\ResponseInterface;
+use GuzzleHttp5Legacy\Stream\Stream;
 
 class MockBeforeEvent extends BeforeEvent
 {

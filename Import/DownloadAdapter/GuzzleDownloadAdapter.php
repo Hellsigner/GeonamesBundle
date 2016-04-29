@@ -2,11 +2,11 @@
 
 namespace Giosh94mhz\GeonamesBundle\Import\DownloadAdapter;
 
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Client;
-use GuzzleHttp\Event\CompleteEvent;
-use GuzzleHttp\Pool;
-use GuzzleHttp\Event\ProgressEvent;
+use GuzzleHttp5Legacy\ClientInterface;
+use GuzzleHttp5Legacy\Client;
+use GuzzleHttp5Legacy\Event\CompleteEvent;
+use GuzzleHttp5Legacy\Pool;
+use GuzzleHttp5Legacy\Event\ProgressEvent;
 
 class GuzzleDownloadAdapter extends AbstractDownloadAdapter
 {
